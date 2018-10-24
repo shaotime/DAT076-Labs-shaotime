@@ -1,0 +1,50 @@
+
+Test the Author resource
+
+# (Re)create database
+curl -v http://localhost:8080/db
+
+# Options (used by CORS preflight)
+curl -v -X OPTIONS http://localhost:8080/
+
+# Get all authors
+curl -v http://localhost:8080/authors
+
+# Get single author
+curl -v http://localhost:8080/authors/FF
+
+# Get primitive type (number of authors)
+curl -v http://localhost:8080/authors/count
+
+# Create new author using JSON (this is a POST)
+curl -v -H "Content-Type: application/json" http://localhost:8080/authors --data '{"id":"JJ", "firstName":"Jbert", "lastName":"Xson", "email":"xson@mail", "address":""}'
+
+# Update an author
+curl -v -H "Content-Type: application/json" -X PUT http://localhost:8080/authors --data '{"id":"XX", "firstName":"NEWbert", "lastName":"NEWson", "email":"NEW@mail", "address":""}'
+
+# Delete (last part of URL is id)
+curl -v -X DELETE http://localhost:8080/authors/XX
+
+
+--------
+
+curl -v -H "Content-Type: application/json" http://localhost:8080/authors --data '{"id":"YY", "firstName":"Ybert", "lastName":"Yson", "email":"Yson@mail", "address":""}'
+
+Test the Book resource
+
+# Get all books
+curl -v http://localhost:8080/books
+
+# Create new book using JSON (this is a POST)
+curl -v -H "Content-Type: application/json" http://localhost:8080/books --data '{"isbn":"BB", "price":"14.0", "title":"Book of Books"}'
+
+# Update a book
+curl -v -H "Content-Type: application/json" -X POST http://localhost:8080/books --data '{"isbn":"BB", "price":"16.0", "title":"Newer Book of Books"}'
+
+# Delete
+curl -v -X DELETE http://localhost:8080/books/BB
+
+
+--------
+curl 'http://localhost:8080/books/edit' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Referer: http://127.0.0.1:8081/view/book.html' -H 'Origin: http://127.0.0.1:8081' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' --data 'isbn=BB&title=Book+of+Books&price=16.0&genre=dummy' --compressed
+curl 'http://localhost:8080/books/' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Referer: http://127.0.0.1:8081/view/book.html' -H 'Origin: http://127.0.0.1:8081' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' --data 'isbn=BB&title=Book+of+Books&price=15.0&genre=dummy' --compressed

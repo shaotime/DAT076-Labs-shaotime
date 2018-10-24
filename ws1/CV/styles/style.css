@@ -1,0 +1,68 @@
+@media only screen and (max-width: 1000px){
+  body {
+          background-color: lightblue;
+      }
+
+}
+
+
+
+html {
+      font-size: 10px; /* px means 'pixels': the base font size is now 10 pixels high  */
+      font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+h2 {
+  font-size: 40px;
+  animation-duration: 4s;
+  animation-name: slidein;
+}
+
+h3 {
+  font-size: 30px;
+  animation-duration: 5s;
+  animation-name: slidein;
+}
+
+p, li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+  animation-duration: 6s;
+  animation-name: slidein;
+}
+
+img {
+  width: 400px;
+
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+#important {
+  color: pink;
+}
+
+
+
+p:hover{
+  color: red;
+
+}
